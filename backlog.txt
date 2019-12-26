@@ -1,0 +1,11 @@
+Features
+--------
+* Settings page (UserDefaults persistence)
+    * Reset interval (seconds)
+    * Mode: Instantaneous BPM & Average BPM over N taps
+* Sample live audio
+* Cool graphics
+
+Enhancements
+------------
+* "Tap" button should fire on tap-down (not on release)
