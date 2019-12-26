@@ -8,6 +8,19 @@
 
 import SwiftUI
 
+/// Triggers button action immediately on press (mimicking UIKit's "Touch Down" send event).
+struct TapButtonStyle: PrimitiveButtonStyle {
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration
+            .label
+                .foregroundColor(.blue)
+                .onLongPressGesture(
+                    minimumDuration: 0,
+                    perform: configuration.trigger
+                )
+    }
+}
+
 struct ContentView: View {
     @State private var isCounting = false
     @State private var lastTap = Date()
@@ -34,7 +47,7 @@ struct ContentView: View {
                 
                 HStack {
                     if !self.isCounting {
-                        Text("Tap to begin counting.")
+                        Text("Tap to begin measuring.")
                     } else {
                         Text("\(Int(bpm.rounded())) BPM")
                             .font(.largeTitle)
@@ -52,6 +65,7 @@ struct ContentView: View {
                     Spacer()
                     
                     Button("Tap") { self.tap() }
+                        .buttonStyle(TapButtonStyle())
                     
                     Spacer()
                 }
