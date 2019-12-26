@@ -11,3 +11,4 @@ Enhancements
 * "Tap" should fire on touch-down, not touch-up-inside
 * "Tap" anywhere on screen instead of button?
 * Nicer UI
+* Haptic feedback on tap

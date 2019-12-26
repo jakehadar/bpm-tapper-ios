@@ -28,41 +28,47 @@ struct ContentView: View {
     }
     
     var body: some View {
-        VStack {
-            Spacer()
-            
-            HStack {
-                if !self.isCounting {
-                    Text("Tap to begin counting.")
-                } else {
-                    Text("\(Int(bpm.rounded())) BPM")
-                        .font(.largeTitle)
+        NavigationView {
+            VStack {
+                Spacer()
+                
+                HStack {
+                    if !self.isCounting {
+                        Text("Tap to begin counting.")
+                    } else {
+                        Text("\(Int(bpm.rounded())) BPM")
+                            .font(.largeTitle)
+                    }
+                }.frame(height: 100.0)
+                
+                Spacer()
+                
+                HStack {
+                    Spacer()
+                    
+                    Button("Reset") { self.reset() }
+                        .disabled(!self.isCounting)
+                    
+                    Spacer()
+                    
+                    Button("Tap") { self.tap() }
+                    
+                    Spacer()
                 }
-            }.frame(height: 100.0)
-            
-            Spacer()
-            
-            HStack {
-                Spacer()
-                
-                Button("Reset") { self.reset() }
-                    .disabled(!self.isCounting)
-                
-                Spacer()
-                
-                Button("Tap") { self.tap() }
                 
                 Spacer()
             }
-            
-            Spacer()
-            
         }
     }
 }
 
+#if DEBUG
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView().environment(\.colorScheme, .light)
+            ContentView().environment(\.colorScheme, .dark)
+        }
     }
 }
+#endif
