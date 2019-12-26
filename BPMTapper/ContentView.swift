@@ -31,29 +31,28 @@ struct ContentView: View {
         VStack {
             Spacer()
             
-            if !self.isCounting {
-                Text("Tap to begin counting.")
-            } else {
-                Text("\(Int(bpm.rounded())) BPM")
-                    .font(.largeTitle)
-            }
+            HStack {
+                if !self.isCounting {
+                    Text("Tap to begin counting.")
+                } else {
+                    Text("\(Int(bpm.rounded())) BPM")
+                        .font(.largeTitle)
+                }
+            }.frame(height: 100.0)
             
             Spacer()
             
             HStack {
                 Spacer()
                 
-                Button("Reset") {
-                    self.reset()
-                }
-                .disabled(!self.isCounting)
+                Button("Reset") { self.reset() }
+                    .disabled(!self.isCounting)
                 
                 Spacer()
                 
                 Button("Tap") { self.tap() }
                 
                 Spacer()
-                
             }
             
             Spacer()
