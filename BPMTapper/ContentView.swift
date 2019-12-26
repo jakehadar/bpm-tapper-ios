@@ -35,6 +35,7 @@ struct ContentView: View {
                 Text("Tap to begin counting.")
             } else {
                 Text("\(Int(bpm.rounded())) BPM")
+                    .font(.largeTitle)
             }
             
             Spacer()

@@ -4,8 +4,10 @@ Features
     * Reset interval (seconds)
     * Mode: Instantaneous BPM & Average BPM over N taps
 * Sample live audio
-* Cool graphics
+* Click track (audio)
 
 Enhancements
 ------------
-* "Tap" button should fire on tap-down (not on release)
+* "Tap" should fire on touch-down, not touch-up-inside
+* "Tap" anywhere on screen instead of button?
+* Nicer UI
