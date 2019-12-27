@@ -9,4 +9,3 @@ Features
 Enhancements
 ------------
 * Nicer UI
-* Haptic feedback on tap
