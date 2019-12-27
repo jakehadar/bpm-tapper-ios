@@ -42,35 +42,39 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                Spacer()
+            ZStack {
+                Rectangle()
+                    .frame(minWidth:0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                    .foregroundColor(Color.clear)
+                    .contentShape(Rectangle())
+                    .onLongPressGesture(minimumDuration: 0) {
+                        self.tap()
+                    }
                 
-                HStack {
-                    if !self.isCounting {
-                        Text("Tap to begin measuring.")
-                    } else {
+                VStack {
+                    Spacer()
+                    
+                    VStack {
                         Text("\(Int(bpm.rounded())) BPM")
                             .font(.largeTitle)
-                    }
-                }.frame(height: 100.0)
-                
-                Spacer()
-                
-                HStack {
-                    Spacer()
-                    
-                    Button("Reset") { self.reset() }
+                            .frame(height: 100.0)
+                            .padding()
+                            .allowsHitTesting(false)
+                                                
+                        Button("Reset") {
+                            self.reset()
+                        }
                         .disabled(!self.isCounting)
-                    
-                    Spacer()
-                    
-                    Button("Tap") { self.tap() }
-                        .buttonStyle(TapButtonStyle())
-                    
-                    Spacer()
+                        .allowsHitTesting(true)
+                        
+                        Spacer()
+                        if !self.isCounting {
+                            Text("Tap anywhere to begin measuring.")
+                            Spacer()
+                        }
+                        
+                    }
                 }
-                
-                Spacer()
             }
         }
     }
